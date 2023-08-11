@@ -24,14 +24,19 @@
 }
 /* icon-styles */
 .icon-style {
-  @apply h-6 w-6 sm:h-5 sm:w-5 text-black cursor-pointer transition-all duration-100 active:scale-110 leading-tight;
+  @apply h-6 w-6 sm:h-5 sm:w-5 cursor-pointer transition-all duration-100 active:scale-110 leading-tight;
 }
 
 /* button */
 .button-theme {
-  @apply px-7 py-1 rounded active:scale-90 transition-all duration-100 ease-in-out shadow-md sm:text-sm;
+  @apply rounded active:scale-90 transition-all duration-100 ease-in-out shadow-md sm:text-sm;
 }
 /* transition-theme */
 .transition-theme {
   @apply transition-all duration-700 ease-in-out cursor-pointer;
+}
+
+/* text-gradient */
+.text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-tr from-blue-500 to-sky-500;
 }

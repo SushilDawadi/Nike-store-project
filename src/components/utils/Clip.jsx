@@ -1,4 +1,5 @@
 import { PlayIcon } from "@heroicons/react/24/solid";
+import PropTypes from "prop-types";
 
 const Clip = ({ clip, imgSrc }) => {
   return (
@@ -9,8 +10,8 @@ const Clip = ({ clip, imgSrc }) => {
           alt="img/clips"
           className="inset-0 flex h-full w-full object-cover absolute top-0 left-0 right-0 rounded-xl opacity-100 z-10 transition-opacity duration-500 "
         />
-        <div className="'bg-white blur-effect-theme absolute top-11 left-11 lg:top-8 lg:left-9 sm:top-4 sm:left-4 right-0 opacity-100 z-[100] w-8 h-8 md:w-5 md:h-5 flex items-center justify-center rounded-xl ">
-          <PlayIcon className="icon-style md:w-3 md:h-3" />
+        <div className="'bg-white absolute top-11 left-11 lg:top-8 lg:left-9 sm:top-4 sm:left-4 right-0 opacity-100 z-[100] w-8 h-8 md:w-5 md:h-5 flex items-center justify-center rounded-xl ">
+          <PlayIcon className="k icon-style  md:w-3 md:h-3 text-cyan-50" />
         </div>
         <video
           autoPlay={true}
@@ -24,6 +25,10 @@ const Clip = ({ clip, imgSrc }) => {
       </div>
     </>
   );
+};
+Clip.propTypes = {
+  clip: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
 };
 
 export default Clip;
