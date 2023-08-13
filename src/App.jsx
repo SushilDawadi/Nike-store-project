@@ -1,4 +1,12 @@
-import { FlexContent, Hero, Sales, Stories, Footer } from "./components";
+import {
+  FlexContent,
+  Hero,
+  Sales,
+  Stories,
+  Footer,
+  Navbar,
+  Cart,
+} from "./components";
 
 import {
   heroapi,
@@ -13,6 +21,8 @@ const App = () => {
   return (
     <>
       <main className="flex flex-col gap-16 relative">
+        <Navbar />
+        {/* <Cart /> */}
         <Hero heroapi={heroapi} />
         <Sales endpoint={popularsales} ifExists />
         {/* ifExists is true than style changes will only occur in popularsale and topratedsales will not change  */}

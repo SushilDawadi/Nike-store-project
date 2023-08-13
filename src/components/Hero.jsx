@@ -20,7 +20,7 @@ const Hero = () => {
             </h1>
             <button
               type="button"
-              className="px-7 py-1 button-theme blur-effect-theme bg-slate-200 shadow-slate-200 rounded-xl my-5"
+              className="px-7 py-1 button-theme  bg-slate-200 shadow-slate-200 rounded-xl my-5"
             >
               {heroapi.btntext}
             </button>

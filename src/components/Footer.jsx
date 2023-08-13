@@ -15,7 +15,7 @@ const Footer = ({ footer: { titles, links } }) => {
             {links.map((list, index) => (
               <ul key={index} className="grid items-center gap-1">
                 {list.map((link, index) => (
-                  <li className="text-sm sm:text-xs" key={index}>
+                  <li className="text-sm sm:text-xs cursor-pointer" key={index}>
                     {link.link}
                   </li>
                 ))}

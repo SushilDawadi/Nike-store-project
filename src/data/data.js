@@ -352,7 +352,7 @@ const footerAPI = {
       { link: "News" },
       { link: "Careers" },
       { link: "Investors" },
-      { link: "Prupose" },
+      { link: "Purpose" },
       { link: "Sustainability" },
     ],
     [
