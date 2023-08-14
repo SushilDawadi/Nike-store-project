@@ -22,7 +22,7 @@ const App = () => {
     <>
       <main className="flex flex-col gap-16 relative">
         <Navbar />
-        {/* <Cart /> */}
+        <Cart />
         <Hero heroapi={heroapi} />
         <Sales endpoint={popularsales} ifExists />
         {/* ifExists is true than style changes will only occur in popularsale and topratedsales will not change  */}
