@@ -16,13 +16,13 @@ const Items = ({
     <>
       {/* main div */}
       <div
-        className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center ${
+        className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center  ${
           ifExists ? "justify-items-start" : " justify-items-center"
         }  rounded-xl py-4 px-5 transition-all duration-700 ease-out w-full hover:scale-105 `}
       >
         {/* textcontent */}
         <div
-          className={`grid items-center {
+          className={`grid items-center opacity-100 z-[-100] {
           ifExists ? "justify-items-start" : " justify-items-center"
         }`}
         >
@@ -35,7 +35,7 @@ const Items = ({
           {/* rating div */}
           <div className="flex items-center justify-between w-28 my-2">
             <div className="flex items-center bg-white/100 px-1 rounded">
-              <h1 className="text-black text-sm  blur-effect-theme font-medium">
+              <h1 className="text-black text-sm  blur-effect-theme font-medium ">
                 ${price}
               </h1>
             </div>
@@ -45,7 +45,7 @@ const Items = ({
             </div>
           </div>
           {/* button div */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ">
             <button
               type="button"
               className="bg-white opacity-90 blur-effect-theme button-theme py-1 px-1 shadow shadow-sky-200"
