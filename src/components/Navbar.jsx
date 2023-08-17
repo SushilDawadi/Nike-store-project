@@ -5,9 +5,20 @@ import {
 } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTotalQTY, setOpenCart } from "../app/CartSlice";
+
 const Navbar = () => {
   const [navState, setNavState] = useState(false);
-
+  const dispatch = useDispatch();
+  const totalQuantity = useSelector(selectTotalQTY);
+  const onCartToggle = () => {
+    dispatch(
+      setOpenCart({
+        cartState: true,
+      })
+    );
+  };
   const onNavScroll = () => {
     if (window.scrollY > 30) {
       setNavState(true);
@@ -31,7 +42,7 @@ const Navbar = () => {
             : "fixed top-0 left-0 right-0 h-[9vh] flex items-center justify-center opacity-100 z-[200] blur-effect-theme"
         }
       >
-        <nav className=" flex items-center justify-between nike-container ">
+        <nav className=" flex items-center justify-between nike-container  ">
           <div className="flex items-center">
             <img
               src={logo}
@@ -52,6 +63,7 @@ const Navbar = () => {
             </li>
             <li className="grid items-center">
               <button
+                onClick={onCartToggle}
                 type="button"
                 className="border-none outline-none active:scale-110 transition-all duration-300 relative"
               >
@@ -65,7 +77,7 @@ const Navbar = () => {
                       : "bg-white text-slate-900 "
                   }`}
                 >
-                  0
+                  {totalQuantity}
                 </div>
               </button>
             </li>

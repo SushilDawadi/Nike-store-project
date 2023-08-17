@@ -1,5 +1,7 @@
-import { ShoppingBagIcon, StarIcon } from "@heroicons/react/24/solid";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { ShoppingBagIcon, StarIcon } from "@heroicons/react/24/solid";
+import { setAddItemToCart, setOpenCart } from "../../app/CartSlice";
 const Items = ({
   ifExists,
   id,
@@ -12,6 +14,18 @@ const Items = ({
   rating,
   price,
 }) => {
+  const dispatch = useDispatch();
+  const onAddToCart = () => {
+    const item = { id, title, text, img, color, shadow, price };
+    dispatch(setAddItemToCart(item));
+  };
+  const onCartToggle = () => {
+    dispatch(
+      setOpenCart({
+        cartState: true,
+      })
+    );
+  };
   return (
     <>
       {/* main div */}
@@ -22,7 +36,7 @@ const Items = ({
       >
         {/* textcontent */}
         <div
-          className={`grid items-center opacity-100 z-[-100] {
+          className={`grid items-center  {
           ifExists ? "justify-items-start" : " justify-items-center"
         }`}
         >
@@ -35,9 +49,7 @@ const Items = ({
           {/* rating div */}
           <div className="flex items-center justify-between w-28 my-2">
             <div className="flex items-center bg-white/100 px-1 rounded">
-              <h1 className="text-black text-sm  blur-effect-theme font-medium ">
-                ${price}
-              </h1>
+              <h1 className="text-black text-sm  font-medium ">${price}</h1>
             </div>
             <div className="flex items-center gap-1">
               <StarIcon className="icon-style text-yellow-300 w-5 h-5 md:w-4 md:h-4 " />
@@ -45,16 +57,21 @@ const Items = ({
             </div>
           </div>
           {/* button div */}
-          <div className="flex items-center gap-3 ">
+          <div className="flex items-center gap-3  ">
             <button
               type="button"
-              className="bg-white opacity-90 blur-effect-theme button-theme py-1 px-1 shadow shadow-sky-200"
+              className="bg-white opacity-90  button-theme py-1 px-1 shadow shadow-sky-200"
+              onClick={() => onAddToCart()}
             >
               <ShoppingBagIcon className="icon-style text-black" />
             </button>
             <button
               type="button"
-              className="bg-white opacity-90 blur-effect-theme button-theme py-1 px-2 shadow shadow-sky-200 text-sm"
+              onClick={() => {
+                onAddToCart();
+                onCartToggle();
+              }}
+              className="bg-white opacity-90  button-theme py-1 px-2 shadow shadow-sky-200 text-sm"
             >
               {btn}
             </button>

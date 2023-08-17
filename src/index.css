@@ -43,3 +43,15 @@
 .text-gradient {
   @apply text-transparent bg-clip-text bg-gradient-to-tr from-blue-500 to-sky-500;
 }
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scroll-style::-webkit-scrollbar {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(66, 245, 141) rgb (66, 245, 141);
+}
+.scroll-style::-webkit-scrollbar {
+  @apply w-2;
+}

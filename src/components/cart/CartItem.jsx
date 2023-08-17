@@ -1,24 +1,132 @@
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import emptybag from "../../assets/emptybag.png";
-const CartItem = () => {
+import PropTypes from "prop-types";
+import { MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useDispatch } from "react-redux";
+import {
+  setDecreasedItemQTY,
+  setIncreasedItemQTY,
+  setRemoveItemFromCart,
+} from "../../app/CartSlice";
+const CartItem = ({
+  item: { id, title, text, img, color, shadow, price, cartQuantity },
+}) => {
+  const dispatch = useDispatch();
+  const onRemoveItem = () => {
+    dispatch(
+      setRemoveItemFromCart({
+        id,
+        title,
+        text,
+        img,
+        color,
+        shadow,
+        price,
+        cartQuantity,
+      })
+    );
+  };
+  const onIncreaseItemQTY = () => {
+    dispatch(
+      setIncreasedItemQTY({
+        id,
+        title,
+        text,
+        img,
+        color,
+        shadow,
+        price,
+        cartQuantity,
+      })
+    );
+  };
+  const onDecreaseItemQTY = () => {
+    dispatch(
+      setDecreasedItemQTY({
+        id,
+        title,
+        text,
+        img,
+        color,
+        shadow,
+        price,
+        cartQuantity,
+      })
+    );
+  };
   return (
     <>
-      <div className="flex items-center justify-center flex-col h-screen px-11 text-center gap-7">
-        <img
-          src={emptybag}
-          alt="emptybag/img"
-          className="w-40 lg:w-36 sm:w-28 h-auto object-fill transition-all duration-300 hover:scale-110 "
-        />
-        <button
-          type="button"
-          className="button-theme bg-gradient-to-b from-amber-500 to-orange-500 shadow-lg shadow-orange-500 flex items-center justify-center text-slate-900 py-2 gap-3 text-sm px-4 font-semibold active:scale-110"
-        >
-          <ArrowLeftIcon className="w-5 h-5 text-slate-900" />
-          <span className="">Back To Nike Store</span>
-        </button>
+      <div className="flex items-center justify-between w-full px-5">
+        <div className="flex items-center gap-5 py-4">
+          <div
+            className={`" bg-gradient-to-b ${color} ${shadow} relative rounded p-3 hover:scale-105 transition-all duration-75 ease-in-out grid items-center"`}
+          >
+            <img
+              src={img}
+              alt={`img/cart-item/${id}`}
+              className="w-36 h-auto object-fill lg:w-28"
+            />
+            <div className="absolute right-[0]  bg-white text-slate-900 rounded m-1 w-9 h-5 flex items-center justify-center  ">
+              ${price}
+            </div>
+          </div>
+          <div className="grid items-center gap-4">
+            <div className="grid items-center leading-none">
+              <h1 className="font-medium text:lg text-slate-900 lg:text-sm">
+                {title}
+              </h1>
+              <p className="text-sm text-slate-800 lg:text-xs">{text}</p>
+            </div>
+
+            <div className="flex  items-center justify-around w-full  ">
+              <button
+                type="button"
+                className=" w-6 h-6  lg:w-5 lg:h-5 flex items-center justify-center active:scale-90 "
+              >
+                <MinusIcon
+                  onClick={onDecreaseItemQTY}
+                  className="bg-theme-cart w-5 h-5 rounded lg:w-4 lg:h-4 text-white stroke-[2] "
+                />
+              </button>
+              <div className="bg-theme-cart rounded text-white font-medium lg:text-sm w-7 h-6 lg:h-5 lg:w-6 flex items-center justify-center">
+                {cartQuantity}
+              </div>
+              <button className="w-6 h-6  lg:w-5 lg:h-5 flex items-center justify-center active:scale-90 ">
+                <PlusIcon
+                  onClick={onIncreaseItemQTY}
+                  className="bg-theme-cart w-5 h-5 rounded lg:w-4 lg:h-4 text-white stroke-[2]"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="grid items-center gap-5">
+          <div className="grid items-center justify-center">
+            <h1 className="text-lg lg:text-base text-slate-900 font-medium ">
+              ${price * cartQuantity}
+            </h1>
+          </div>
+          <div className="grid items-center justify-center">
+            <button
+              type="button"
+              className="bg-theme-cart rounded p-1 lg:p-0.5 grid items-center justify-center cursor-pointer "
+              onClick={onRemoveItem}
+            >
+              <TrashIcon className="w-5 h-5 text-white " />
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
 };
-
+CartItem.propTypes = {
+  item: PropTypes.object,
+  id: PropTypes.string,
+  title: PropTypes.string,
+  text: PropTypes.string,
+  img: PropTypes.string,
+  shadow: PropTypes.string,
+  price: PropTypes.string,
+  cartQuantity: PropTypes.number,
+  color: PropTypes.object,
+};
 export default CartItem;
