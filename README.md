@@ -1,3 +1,4 @@
-I am developing a project centered around a Nike store, aiming to bolster my understanding of React, Redux, and Tailwind CSS. This undertaking will provide me with practical experience in utilizing these technologies effectively.
+
+I'm working on a project focused on a Nike store to enhance my grasp of React, Redux, and Tailwind CSS. Through this project, I aim to gain hands-on experience in effectively using these technologies and improving my practical skills.
 
 Project Link --->https://nike-commerce-store.netlify.app/
